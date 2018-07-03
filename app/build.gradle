@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply from: 'gradle/var_definition.gradle'
+
+android {
+    compileSdkVersion project.buildVersion
+    defaultConfig {
+        applicationId "com.example.smadhiya.viewstub"
+        minSdkVersion project.minSDK
+        targetSdkVersion project.buildVersion
+        versionCode project.versionCode
+        versionName project.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$project.supportLib"
+    implementation "com.android.support.constraint:constraint-layout:$project.constraintLayout"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation "junit:junit:$project.jUnit"
+    androidTestImplementation "com.android.support.test:runner:$project.testRunner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.espressoCore"
+    implementation "com.android.support:design:$project.supportLib"
+}
